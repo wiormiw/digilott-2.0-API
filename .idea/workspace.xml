@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="feat(digilott): Add users + auth endpoint" />
+    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="feat(gitignore): Don't include application.properties">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,7 +91,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740492884327</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(gitignore): Don't include application.properties">
+      <option name="closed" value="true" />
+      <created>1740493334637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740493334637</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -105,7 +115,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(digilott): Add users + auth endpoint" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(digilott): Add users + auth endpoint" />
+    <MESSAGE value="feat(gitignore): Don't include application.properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(gitignore): Don't include application.properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
