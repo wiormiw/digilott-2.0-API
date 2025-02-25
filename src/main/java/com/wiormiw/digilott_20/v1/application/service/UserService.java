@@ -1,6 +1,7 @@
 package com.wiormiw.digilott_20.v1.application.service;
 
 import com.wiormiw.digilott_20.v1.domain.dto.*;
+import com.wiormiw.digilott_20.v1.domain.exception.ResourceNotFoundException;
 import com.wiormiw.digilott_20.v1.domain.models.Profile;
 import com.wiormiw.digilott_20.v1.domain.models.User;
 import com.wiormiw.digilott_20.v1.infrastructure.repository.ProfileRepository;
@@ -28,57 +29,34 @@ public class UserService {
 
     public List<UserResponseDTO> getAllUsers() {
         return userRepository.findAll().stream()
-                .map(user -> new UserResponseDTO(
-                                user.getId(),
-                                user.getUsername(),
-                                user.getEmail()))
+                .map(user -> new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail()))
                 .collect(Collectors.toList());
     }
 
     public List<UserProfileDTO> getAllUsersWithProfiles() {
         return profileRepository.findAll().stream()
                 .map(profile -> new UserProfileDTO(
-                        new UserResponseDTO(
-                                profile.getUser().getId(),
-                                profile.getUser().getUsername(),
-                                profile.getUser().getEmail()
-                        ),
-                        new ProfileDTO(
-                                profile.getNik(),
-                                profile.getFullName(),
-                                profile.getProvince(),
-                                profile.getCity(),
-                                profile.getFullPhoneNumber()
-                        )
+                        new UserResponseDTO(profile.getUser().getId(), profile.getUser().getUsername(), profile.getUser().getEmail()),
+                        new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber())
                 ))
                 .collect(Collectors.toList());
     }
 
-    public Optional<UserResponseDTO> getById(UUID id) {
-        return userRepository.findById(id)
-                .map(user -> new UserResponseDTO(
-                        user.getId(),
-                        user.getUsername(),
-                        user.getEmail()
-                ));
+    public UserResponseDTO getById(UUID id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
+
+        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
     }
 
-    public Optional<UserProfileDTO> getProfileByUserId(UUID userId) {
-        return profileRepository.findByUserId(userId)
-                .map(profile -> new UserProfileDTO(
-                        new UserResponseDTO(
-                                profile.getUser().getId(),
-                                profile.getUser().getUsername(),
-                                profile.getUser().getEmail()
-                        ),
-                        new ProfileDTO(
-                                profile.getNik(),
-                                profile.getFullName(),
-                                profile.getProvince(),
-                                profile.getCity(),
-                                profile.getFullPhoneNumber()
-                        )
-                ));
+    public UserProfileDTO getProfileByUserId(UUID userId) {
+        Profile profile = profileRepository.findByUserId(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Profile for User ID " + userId + " not found"));
+
+        return new UserProfileDTO(
+                new UserResponseDTO(profile.getUser().getId(), profile.getUser().getUsername(), profile.getUser().getEmail()),
+                new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber())
+        );
     }
 
     @Transactional
@@ -97,49 +75,50 @@ public class UserService {
         profile.setCountryCode(dto.countryCode());
         profile.setPhoneNumber(dto.phoneNumber());
 
-        User savedUser = userRepository.save(user);
+        userRepository.save(user);
+        profileRepository.save(profile);
 
-        return new UserResponseDTO(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail());
+        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
     }
 
     @Transactional
-    public Optional<UserResponseDTO> updateUser(UUID userId, UserRequestDTO dto) {
-        return userRepository.findById(userId).map(user -> {
-            user.setUsername(dto.username());
-            user.setEmail(dto.email());
+    public UserResponseDTO updateUser(UUID userId, UserRequestDTO dto) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User with ID " + userId + " not found"));
 
-            if (dto.password() != null && !dto.password().isBlank()) {
-                user.setPassword(passwordEncoder.encode(dto.password()));
-            }
+        user.setUsername(dto.username());
+        user.setEmail(dto.email());
 
-            userRepository.save(user);
-            return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
-        });
+        if (dto.password() != null && !dto.password().isBlank()) {
+            user.setPassword(passwordEncoder.encode(dto.password()));
+        }
+
+        userRepository.save(user);
+        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
     }
 
     @Transactional
-    public Optional<ProfileDTO> updateProfile(UUID userId, ProfileUpdateDTO dto) {
-        return profileRepository.findByUserId(userId).map(profile -> {
-            profile.setNik(dto.nik());
-            profile.setFullName(dto.fullName());
-            profile.setProvince(dto.province());
-            profile.setCity(dto.city());
-            profile.setCountryCode(dto.countryCode());
-            profile.setPhoneNumber(dto.phoneNumber());
+    public ProfileDTO updateProfile(UUID userId, ProfileUpdateDTO dto) {
+        Profile profile = profileRepository.findByUserId(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("Profile for User ID " + userId + " not found"));
 
-            profileRepository.save(profile);
-            return new ProfileDTO(
-                    profile.getNik(),
-                    profile.getFullName(),
-                    profile.getProvince(),
-                    profile.getCity(),
-                    profile.getFullPhoneNumber()
-            );
-        });
+        profile.setNik(dto.nik());
+        profile.setFullName(dto.fullName());
+        profile.setProvince(dto.province());
+        profile.setCity(dto.city());
+        profile.setCountryCode(dto.countryCode());
+        profile.setPhoneNumber(dto.phoneNumber());
+
+        profileRepository.save(profile);
+        return new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber());
     }
 
     @Transactional
     public void deleteUser(UUID id) {
+        if (!userRepository.existsById(id)) {
+            throw new ResourceNotFoundException("User with ID " + id + " not found");
+        }
         userRepository.deleteById(id);
     }
 }
+

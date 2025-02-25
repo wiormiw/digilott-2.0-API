@@ -28,30 +28,22 @@
 
         @GetMapping("/users/{id}")
         public ResponseEntity<UserResponseDTO> getUserById(@PathVariable UUID id) {
-            return userService.getById(id)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+            return ResponseEntity.ok(userService.getById(id));
         }
 
         @GetMapping("/users/{id}/profile")
         public ResponseEntity<UserProfileDTO> getProfileByUserId(@PathVariable UUID id) {
-            return userService.getProfileByUserId(id)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+            return ResponseEntity.ok(userService.getProfileByUserId(id));
         }
 
         @PutMapping("/users/{id}")
         public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserRequestDTO dto) {
-            return userService.updateUser(id, dto)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+            return ResponseEntity.ok(userService.updateUser(id, dto));
         }
 
         @PutMapping("/users/{id}/profile")
         public ResponseEntity<ProfileDTO> updateProfile(@PathVariable UUID id, @RequestBody ProfileUpdateDTO dto) {
-            return userService.updateProfile(id, dto)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.notFound().build());
+            return ResponseEntity.ok(userService.updateProfile(id, dto));
         }
 
         @DeleteMapping("/users/{id}")
