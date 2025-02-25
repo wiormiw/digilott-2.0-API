@@ -1,0 +1,15 @@
+spring.application.name=digilott-2.0
+
+# Database
+spring.datasource.url=jdbc:postgresql://localhost:5432/digilott_v2
+spring.datasource.username=username
+spring.datasource.password=password
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# JWT
+jwt.secret=JWT_SECRET_KEY
+jwt.expiration=24
