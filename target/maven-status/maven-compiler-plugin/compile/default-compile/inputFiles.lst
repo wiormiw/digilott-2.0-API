@@ -8,6 +8,9 @@
 /home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/dto/UserProfileDTO.java
 /home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/dto/UserRequestDTO.java
 /home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/dto/UserResponseDTO.java
+/home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/ApiError.java
+/home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java
+/home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/ResourceNotFoundException.java
 /home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Profile.java
 /home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/domain/models/User.java
 /home/wiormiw/Git/Projects/digilott-2.0-API/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/config/JwtProperties.java

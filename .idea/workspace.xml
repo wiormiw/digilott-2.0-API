@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="feat(gitignore): Don't include application.properties">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/ApiError.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/ResourceNotFoundException.java" afterDir="false" />
+    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="ref(user_module): Refactor user module (service &amp; controller) for better error handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/digilott-2.0-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/digilott-2.0-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wiormiw.digilott_20.ApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wiormiw.digilott_20.ApplicationTests.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.wiormiw.digilott_20.ApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.wiormiw.digilott_20.ApplicationTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +115,23 @@
       <option name="project" value="LOCAL" />
       <updated>1740503740991</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="feat(global_exception): Add Global Error/Exception.">
+      <option name="closed" value="true" />
+      <created>1740524119055</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740524119056</updated>
+    </task>
+    <task id="LOCAL-00005" summary="ref(user_module): Refactor user module (service &amp; controller) for better error handling">
+      <option name="closed" value="true" />
+      <created>1740524180522</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740524180522</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,14 +148,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(digilott): Add users + auth endpoint" />
     <MESSAGE value="feat(gitignore): Don't include application.properties" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(gitignore): Don't include application.properties" />
+    <MESSAGE value="feat(global_exception): Add Global Error/Exception." />
+    <MESSAGE value="ref(user_module): Refactor user module (service &amp; controller) for better error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="ref(user_module): Refactor user module (service &amp; controller) for better error handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java</url>
-          <line>18</line>
+          <line>19</line>
           <properties field="authenticationManager" class="com.wiormiw.digilott_20.v1.web.controller.AuthController" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
