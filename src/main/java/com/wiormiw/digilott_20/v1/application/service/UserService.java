@@ -1,11 +1,18 @@
 package com.wiormiw.digilott_20.v1.application.service;
 
-import com.wiormiw.digilott_20.v1.domain.dto.*;
+import com.wiormiw.digilott_20.v1.domain.dto.ProfileDTO;
+import com.wiormiw.digilott_20.v1.domain.dto.ProfileUpdateDTO;
+import com.wiormiw.digilott_20.v1.domain.dto.UserProfileDTO;
+import com.wiormiw.digilott_20.v1.domain.dto.UserRequestDTO;
+import com.wiormiw.digilott_20.v1.domain.dto.UserResponseDTO;
+import com.wiormiw.digilott_20.v1.domain.exception.BadRequestException;
 import com.wiormiw.digilott_20.v1.domain.exception.ResourceNotFoundException;
 import com.wiormiw.digilott_20.v1.domain.models.Profile;
+import com.wiormiw.digilott_20.v1.domain.models.Role;
 import com.wiormiw.digilott_20.v1.domain.models.User;
 import com.wiormiw.digilott_20.v1.infrastructure.repository.ProfileRepository;
 import com.wiormiw.digilott_20.v1.infrastructure.repository.UserRepository;
+import com.wiormiw.digilott_20.v1.infrastructure.repository.RoleRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -18,11 +25,17 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     private final ProfileRepository profileRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, ProfileRepository profileRepository, PasswordEncoder passwordEncoder) {
+    public UserService(
+            UserRepository userRepository,
+            ProfileRepository profileRepository,
+            RoleRepository roleRepository,
+            PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -58,14 +71,18 @@ public class UserService {
 
     @Transactional
     public UserResponseDTO registerUser(UserRequestDTO dto) {
-        if (dto.password() == null || dto.password().isBlank()) {
-            throw new IllegalArgumentException("Password cannot be blank");
+        if (userRepository.existsByUsername(dto.username())) {
+            throw new BadRequestException("Username already taken");
         }
+
+        Role userRole = roleRepository.findByName(Role.RoleType.USER)
+                .orElseThrow(() -> new IllegalStateException("Default role not found"));
 
         User user = new User();
         user.setUsername(dto.username());
         user.setPassword(passwordEncoder.encode(dto.password()));
         user.setEmail(dto.email());
+        user.setRole(userRole);
 
         Profile profile = new Profile();
         profile.setUser(user);
