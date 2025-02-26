@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,24 +42,26 @@ public class UserService {
     }
 
     public UserResponseDTO getById(UUID id) {
-        User user = userRepository.findById(id)
+        return userRepository.findById(id)
+                .map(user -> new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail()))
                 .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
-
-        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
     }
 
     public UserProfileDTO getProfileByUserId(UUID userId) {
-        Profile profile = profileRepository.findByUserId(userId)
+        return profileRepository.findByUserId(userId)
+                .map(profile -> new UserProfileDTO(
+                        new UserResponseDTO(profile.getUser().getId(), profile.getUser().getUsername(), profile.getUser().getEmail()),
+                        new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber())
+                ))
                 .orElseThrow(() -> new ResourceNotFoundException("Profile for User ID " + userId + " not found"));
-
-        return new UserProfileDTO(
-                new UserResponseDTO(profile.getUser().getId(), profile.getUser().getUsername(), profile.getUser().getEmail()),
-                new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber())
-        );
     }
 
     @Transactional
     public UserResponseDTO registerUser(UserRequestDTO dto) {
+        if (dto.password() == null || dto.password().isBlank()) {
+            throw new IllegalArgumentException("Password cannot be blank");
+        }
+
         User user = new User();
         user.setUsername(dto.username());
         user.setPassword(passwordEncoder.encode(dto.password()));
