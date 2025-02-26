@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,7 +42,7 @@ public class AuthController extends BaseV1Controller {
     }
 
     @PostMapping("/auth/register")
-    public ResponseEntity<UserResponseDTO> registerUser(@RequestBody UserRequestDTO dto) {
+    public ResponseEntity<UserResponseDTO> registerUser(@Validated @RequestBody UserRequestDTO dto) {
         return ResponseEntity.ok(userService.registerUser(dto));
     }
 }

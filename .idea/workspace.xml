@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="ref(user_module): Refactor user module (service &amp; controller) for better error handling">
+    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="feat(default_exception_handler): Add IllegalArgumentExecption handler">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" afterDir="false" />
@@ -131,7 +131,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740524180522</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(default_exception_handler): Add IllegalArgumentExecption handler">
+      <option name="closed" value="true" />
+      <created>1740528360296</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1740528360296</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -150,7 +158,8 @@
     <MESSAGE value="feat(gitignore): Don't include application.properties" />
     <MESSAGE value="feat(global_exception): Add Global Error/Exception." />
     <MESSAGE value="ref(user_module): Refactor user module (service &amp; controller) for better error handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="ref(user_module): Refactor user module (service &amp; controller) for better error handling" />
+    <MESSAGE value="feat(default_exception_handler): Add IllegalArgumentExecption handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(default_exception_handler): Add IllegalArgumentExecption handler" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
