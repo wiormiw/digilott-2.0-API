@@ -46,4 +46,11 @@ public class User {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Profile profile;
+
+    @ManyToMany(mappedBy = "participants")
+    private List<Room> joinedRooms;
+
+    public boolean isAdmin() {
+        return this.role != null && this.role.getName() == Role.RoleType.ADMIN;
+    }
 }
