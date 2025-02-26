@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="feat(default_exception_handler): Add IllegalArgumentExecption handler">
+    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="feat(bad_request_exception): Add new custom exception (BadRequestException)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/BadRequestException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/digilott-2.0-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/digilott-2.0-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wiormiw.digilott_20.ApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wiormiw.digilott_20.ApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.wiormiw.digilott_20.ApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.wiormiw.digilott_20.ApplicationTests.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/security/JwtAuthFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Exception" />
         <option value="Interface" />
         <option value="Record" />
         <option value="Class" />
@@ -139,7 +137,87 @@
       <option name="project" value="LOCAL" />
       <updated>1740528360296</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="feat(auth_controller): Add validation in register request endpoint">
+      <option name="closed" value="true" />
+      <created>1740528432468</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740528432468</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ref(user_service): refactor to use map if when possible">
+      <option name="closed" value="true" />
+      <created>1740528479633</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1740528479633</updated>
+    </task>
+    <task id="LOCAL-00009" summary="style(endpoint_style): implement DRY in endpoint styling.">
+      <option name="closed" value="true" />
+      <created>1740559089220</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559089220</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat(dto_validation): Add validation to DTO for better data integrity and response.">
+      <option name="closed" value="true" />
+      <created>1740559150233</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559150233</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat(roles): Add custom roles fungsionality">
+      <option name="closed" value="true" />
+      <created>1740559241276</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559241276</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat(roles): Add custom roles fungsionality">
+      <option name="closed" value="true" />
+      <created>1740559254345</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559254345</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat(roles): Add custom roles fungsionality">
+      <option name="closed" value="true" />
+      <created>1740559318818</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559318818</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat(rooms): Add rooms module">
+      <option name="closed" value="true" />
+      <created>1740559380257</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559380257</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ref(auth_request_dto): make dto support simple validation">
+      <option name="closed" value="true" />
+      <created>1740559416022</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559416022</updated>
+    </task>
+    <task id="LOCAL-00016" summary="feat(bad_request_exception): Add new custom exception (BadRequestException)">
+      <option name="closed" value="true" />
+      <created>1740559455598</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1740559455598</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,14 +237,22 @@
     <MESSAGE value="feat(global_exception): Add Global Error/Exception." />
     <MESSAGE value="ref(user_module): Refactor user module (service &amp; controller) for better error handling" />
     <MESSAGE value="feat(default_exception_handler): Add IllegalArgumentExecption handler" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(default_exception_handler): Add IllegalArgumentExecption handler" />
+    <MESSAGE value="feat(auth_controller): Add validation in register request endpoint" />
+    <MESSAGE value="ref(user_service): refactor to use map if when possible" />
+    <MESSAGE value="style(endpoint_style): implement DRY in endpoint styling." />
+    <MESSAGE value="feat(dto_validation): Add validation to DTO for better data integrity and response." />
+    <MESSAGE value="feat(roles): Add custom roles fungsionality" />
+    <MESSAGE value="feat(rooms): Add rooms module" />
+    <MESSAGE value="ref(auth_request_dto): make dto support simple validation" />
+    <MESSAGE value="feat(bad_request_exception): Add new custom exception (BadRequestException)" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(bad_request_exception): Add new custom exception (BadRequestException)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
           <url>file://$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java</url>
-          <line>19</line>
+          <line>21</line>
           <properties field="authenticationManager" class="com.wiormiw.digilott_20.v1.web.controller.AuthController" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
