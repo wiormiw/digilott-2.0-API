@@ -3,12 +3,14 @@
     import com.wiormiw.digilott_20.v1.application.service.UserService;
     import com.wiormiw.digilott_20.v1.domain.dto.*;
     import org.springframework.http.ResponseEntity;
+    import org.springframework.validation.annotation.Validated;
     import org.springframework.web.bind.annotation.*;
 
     import java.util.List;
     import java.util.UUID;
 
     @RestController
+    @RequestMapping("/api/v1/users")
     public class UserController extends BaseV1Controller {
         private final UserService userService;
 
@@ -16,39 +18,39 @@
             this.userService = userService;
         }
 
-        @GetMapping("/users")
+        @GetMapping
         public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
             return ResponseEntity.ok(userService.getAllUsers());
         }
 
-        @GetMapping("/users/profiles")
+        @GetMapping("/profiles")
         public ResponseEntity<List<UserProfileDTO>> getAllUsersWithProfiles() {
             return ResponseEntity.ok(userService.getAllUsersWithProfiles());
         }
 
-        @GetMapping("/users/{id}")
-        public ResponseEntity<UserResponseDTO> getUserById(@PathVariable UUID id) {
-            return ResponseEntity.ok(userService.getById(id));
+        @GetMapping("/{userId}")
+        public ResponseEntity<UserResponseDTO> getUserById(@PathVariable UUID userId) {
+            return ResponseEntity.ok(userService.getById(userId));
         }
 
-        @GetMapping("/users/{id}/profile")
-        public ResponseEntity<UserProfileDTO> getProfileByUserId(@PathVariable UUID id) {
-            return ResponseEntity.ok(userService.getProfileByUserId(id));
+        @GetMapping("/{userId}/profile")
+        public ResponseEntity<UserProfileDTO> getProfileByUserId(@PathVariable UUID userId) {
+            return ResponseEntity.ok(userService.getProfileByUserId(userId));
         }
 
-        @PutMapping("/users/{id}")
-        public ResponseEntity<UserResponseDTO> updateUser(@PathVariable UUID id, @RequestBody UserRequestDTO dto) {
-            return ResponseEntity.ok(userService.updateUser(id, dto));
+        @PutMapping("/{userId}")
+        public ResponseEntity<UserResponseDTO> updateUser(@Validated @PathVariable UUID userId, @RequestBody UserRequestDTO dto) {
+            return ResponseEntity.ok(userService.updateUser(userId, dto));
         }
 
-        @PutMapping("/users/{id}/profile")
-        public ResponseEntity<ProfileDTO> updateProfile(@PathVariable UUID id, @RequestBody ProfileUpdateDTO dto) {
-            return ResponseEntity.ok(userService.updateProfile(id, dto));
+        @PutMapping("/{userId}/profile")
+        public ResponseEntity<ProfileDTO> updateProfile(@Validated  @PathVariable UUID userId, @RequestBody ProfileUpdateDTO dto) {
+            return ResponseEntity.ok(userService.updateProfile(userId, dto));
         }
 
-        @DeleteMapping("/users/{id}")
-        public ResponseEntity<Void> deleteUser(@PathVariable UUID id) {
-            userService.deleteUser(id);
+        @DeleteMapping("/{userId}")
+        public ResponseEntity<Void> deleteUser(@PathVariable UUID userId) {
+            userService.deleteUser(userId);
             return ResponseEntity.noContent().build();
         }
     }
