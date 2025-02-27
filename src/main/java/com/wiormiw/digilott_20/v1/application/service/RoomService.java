@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -34,7 +35,7 @@ public class RoomService {
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
         Room room = new Room(UUID.randomUUID(), dto.name(), dto.description(),
-                List.of(user), Room.RoomStatus.PENDING,
+                Set.of(user), Room.RoomStatus.PENDING,
                 dto.minParticipants(), dto.maxParticipants(), dto.participationCost());
 
         roomRepository.save(room);
@@ -48,12 +49,12 @@ public class RoomService {
                 room.getParticipationCost());
     }
 
-    public List<RoomResponseDTO> getUserRooms() {
+    public Set<RoomResponseDTO> getUserRooms() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        return user.getJoinedRooms().stream()
+        return user.getRooms().stream()
                 .map(room -> new RoomResponseDTO(
                         room.getId(),
                         room.getName(),
@@ -62,7 +63,7 @@ public class RoomService {
                         room.getMinParticipants(),
                         room.getMaxParticipants(),
                         room.getParticipationCost()))
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     public List<RoomResponseDTO> getAllRooms() {
@@ -87,7 +88,7 @@ public class RoomService {
         Room room = roomRepository.findById(roomId)
                 .orElseThrow(() -> new IllegalArgumentException("Room not found"));
 
-        if (!room.getParticipants().contains(user) && user.getRole().getName() != Role.RoleType.ADMIN) {
+        if (!room.getParticipants().contains(user) && user.getRoles().stream().noneMatch(role -> role.getName() == Role.RoleType.ADMIN)) {
             throw new IllegalArgumentException("You are not authorized to delete this room");
         }
 

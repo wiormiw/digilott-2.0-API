@@ -16,7 +16,8 @@ import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -43,7 +44,7 @@ public class Room {
             joinColumns = @JoinColumn(name = "room_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<User> participants;
+    private Set<User> participants = new HashSet<>();
 
     @Enumerated(EnumType.STRING)
     private RoomStatus status;
