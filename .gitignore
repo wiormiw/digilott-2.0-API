@@ -25,3 +25,7 @@ replay_pid*
 
 # app configuration
 application.properties
+
+# exclude jetbrains folder
+.idea/
+
