@@ -1,9 +1,13 @@
 com/wiormiw/digilott_20/v1/domain/exception/ApiError.class
+com/wiormiw/digilott_20/v1/infrastructure/repository/RoleRepository.class
 com/wiormiw/digilott_20/v1/infrastructure/config/JwtProperties.class
+com/wiormiw/digilott_20/v1/infrastructure/config/RoleInitializer.class
 com/wiormiw/digilott_20/v1/domain/models/Profile.class
+com/wiormiw/digilott_20/v1/domain/dto/RoomRequestDTO.class
 com/wiormiw/digilott_20/v1/domain/dto/UserResponseDTO.class
 com/wiormiw/digilott_20/v1/domain/dto/ProfileUpdateDTO.class
 com/wiormiw/digilott_20/v1/domain/dto/UserRequestDTO.class
+com/wiormiw/digilott_20/v1/domain/exception/BadRequestException.class
 com/wiormiw/digilott_20/v1/domain/dto/AuthRequestDTO.class
 com/wiormiw/digilott_20/v1/domain/exception/DefaultExceptionHandler.class
 com/wiormiw/digilott_20/v1/infrastructure/security/JwtAuthFilter.class
@@ -11,8 +15,12 @@ com/wiormiw/digilott_20/v1/infrastructure/repository/UserRepository.class
 com/wiormiw/digilott_20/v1/domain/dto/UserProfileDTO.class
 com/wiormiw/digilott_20/v1/web/controller/BaseV1Controller.class
 com/wiormiw/digilott_20/v1/infrastructure/security/JwtUtil.class
+com/wiormiw/digilott_20/v1/web/controller/RoomController.class
 com/wiormiw/digilott_20/v1/infrastructure/config/SecurityConfig.class
+com/wiormiw/digilott_20/v1/domain/models/Role$RoleType.class
+com/wiormiw/digilott_20/v1/domain/models/Room$RoomStatus.class
 com/wiormiw/digilott_20/v1/domain/dto/AuthResponseDTO.class
+com/wiormiw/digilott_20/v1/application/service/RoomService.class
 com/wiormiw/digilott_20/v1/infrastructure/repository/ProfileRepository.class
 com/wiormiw/digilott_20/v1/domain/exception/ResourceNotFoundException.class
 com/wiormiw/digilott_20/v1/domain/models/User.class
@@ -21,4 +29,8 @@ com/wiormiw/digilott_20/v1/application/service/UserService.class
 com/wiormiw/digilott_20/v1/web/controller/AuthController.class
 com/wiormiw/digilott_20/v1/domain/dto/ProfileDTO.class
 com/wiormiw/digilott_20/Application.class
+com/wiormiw/digilott_20/v1/domain/models/Room.class
+com/wiormiw/digilott_20/v1/domain/models/Role.class
 com/wiormiw/digilott_20/v1/web/controller/UserController.class
+com/wiormiw/digilott_20/v1/domain/dto/RoomResponseDTO.class
+com/wiormiw/digilott_20/v1/infrastructure/repository/RoomRepository.class
