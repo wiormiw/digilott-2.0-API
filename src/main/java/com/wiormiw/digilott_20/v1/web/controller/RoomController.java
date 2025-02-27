@@ -8,6 +8,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @RestController
@@ -20,16 +21,19 @@ public class RoomController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity<RoomResponseDTO> createRoom(@RequestBody RoomRequestDTO request) {
         return ResponseEntity.ok(roomService.createRoom(request));
     }
 
     @GetMapping
-    public ResponseEntity<List<RoomResponseDTO>> getUserRooms() {
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
+    public ResponseEntity<Set<RoomResponseDTO>> getUserRooms() {
         return ResponseEntity.ok(roomService.getUserRooms());
     }
 
     @DeleteMapping("/{roomId}")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity<String> deleteRoom(@PathVariable UUID roomId) {
         roomService.deleteRoom(roomId);
         return ResponseEntity.ok("Room deleted successfully");
@@ -37,13 +41,13 @@ public class RoomController {
 
     // Admin Endpoints
     @GetMapping("/admin/all")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<List<RoomResponseDTO>> getAllRooms() {
         return ResponseEntity.ok(roomService.getAllRooms());
     }
 
     @DeleteMapping("/admin/{roomId}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMIN')")
     public ResponseEntity<String> adminDeleteRoom(@PathVariable UUID roomId) {
         roomService.deleteRoom(roomId);
         return ResponseEntity.ok("Room deleted successfully by admin");

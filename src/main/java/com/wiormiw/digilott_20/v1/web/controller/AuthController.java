@@ -42,7 +42,7 @@ public class AuthController extends BaseV1Controller {
         );
 
         var userDetails = userDetailsService.loadUserByUsername(authRequest.username());
-        String token = jwtUtil.generateToken(userDetails.getUsername());
+        String token = jwtUtil.generateToken(userDetails);
 
         return ResponseEntity.ok(new AuthResponseDTO(token));
     }

@@ -2,14 +2,16 @@ package com.wiormiw.digilott_20.v1.application.service;
 
 import com.wiormiw.digilott_20.v1.infrastructure.repository.UserRepository;
 import com.wiormiw.digilott_20.v1.domain.models.User;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -29,10 +31,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         User user = optionalUser.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
+        List<GrantedAuthority> authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
+                .collect(Collectors.toList());
+
         return org.springframework.security.core.userdetails.User.builder()
-                .username(user.getUsername()) // or user.getEmail() if authenticating by email
+                .username(user.getUsername())
                 .password(user.getPassword())
-                .authorities(Collections.singleton(new SimpleGrantedAuthority("ROLE_" + user.getRole().getName().name())))
+                .authorities(authorities)
                 .build();
     }
 }

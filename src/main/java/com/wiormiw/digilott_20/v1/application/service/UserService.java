@@ -18,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -82,7 +83,7 @@ public class UserService {
         user.setUsername(dto.username());
         user.setPassword(passwordEncoder.encode(dto.password()));
         user.setEmail(dto.email());
-        user.setRole(userRole);
+        user.setRoles(Set.of(userRole));
 
         Profile profile = new Profile();
         profile.setUser(user);
@@ -92,9 +93,9 @@ public class UserService {
         profile.setCity(dto.city());
         profile.setCountryCode(dto.countryCode());
         profile.setPhoneNumber(dto.phoneNumber());
+        user.setProfile(profile);
 
         userRepository.save(user);
-        profileRepository.save(profile);
 
         return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
     }
