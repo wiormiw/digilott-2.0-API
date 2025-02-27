@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="ref(rbac): Implement Many-to-many roles &amp; RBAC">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/config/RoleInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/RoomService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/RoomService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/application/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/domain/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/security/JwtAuthFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/security/JwtAuthFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/security/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/infrastructure/security/JwtUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/RoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/RoomController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/wiormiw/digilott_20/v1/web/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/digilott-2.0-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wiormiw.digilott_20.ApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.wiormiw.digilott_20.ApplicationTests.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="67242694-deac-4a07-a2e2-2a204f9c8ac2" name="Changes" comment="style(spring): Spring autogenerated changes." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -256,7 +234,31 @@
       <option name="project" value="LOCAL" />
       <updated>1740638357570</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="feat(role_initializer): Add default roles when startup (ADMIN &amp; USER)">
+      <option name="closed" value="true" />
+      <created>1740638402778</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1740638402778</updated>
+    </task>
+    <task id="LOCAL-00021" summary="ref(room_module): Set room to use Set data structure to avoid duplicate.">
+      <option name="closed" value="true" />
+      <created>1740638494281</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1740638494281</updated>
+    </task>
+    <task id="LOCAL-00022" summary="style(spring): Spring autogenerated changes.">
+      <option name="closed" value="true" />
+      <created>1740638533155</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1740638533155</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,7 +288,10 @@
     <MESSAGE value="feat(bad_request_exception): Add new custom exception (BadRequestException)" />
     <MESSAGE value="style(global): slightly improve readability" />
     <MESSAGE value="ref(rbac): Implement Many-to-many roles &amp; RBAC" />
-    <option name="LAST_COMMIT_MESSAGE" value="ref(rbac): Implement Many-to-many roles &amp; RBAC" />
+    <MESSAGE value="feat(role_initializer): Add default roles when startup (ADMIN &amp; USER)" />
+    <MESSAGE value="ref(room_module): Set room to use Set data structure to avoid duplicate." />
+    <MESSAGE value="style(spring): Spring autogenerated changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="style(spring): Spring autogenerated changes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
