@@ -1,21 +1,15 @@
 package com.wiormiw.digilott_20.v1.domain.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -35,10 +29,20 @@ public class Room {
     @Column(name = "name", nullable = false, length = 25)
     private String name;
 
-    @Column(name = "description", nullable = true, length = 75)
+    @Column(name = "description", length = 75)
     private String description;
 
-    @ManyToMany
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private RoomStatus status;
+
+    @Column(name = "min_participants", nullable = false)
+    private int minParticipants;
+
+    @Column(name = "max_participants", nullable = false)
+    private int maxParticipants;
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "room_participants",
             joinColumns = @JoinColumn(name = "room_id"),
@@ -46,21 +50,24 @@ public class Room {
     )
     private Set<User> participants = new HashSet<>();
 
-    @Enumerated(EnumType.STRING)
-    private RoomStatus status;
-
-    @Column(name = "min_participants", nullable = false, length = 3)
-    private int minParticipants;
-
-    @Column(name = "max_participants", nullable = false, length = 3)
-    private int maxParticipants;
-
     @Column(name = "participation_cost", nullable = false, precision = 10, scale = 2)
     private BigDecimal participationCost;
+
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false, nullable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "started_at")
+    private LocalDateTime startedAt;
+
+    @Column(name = "finished_at")
+    private LocalDateTime finishedAt;
 
     public enum RoomStatus {
         PENDING,
         OPEN,
+        STARTED,
+        FINISHED,
         CLOSED
     }
 }
