@@ -1,6 +1,6 @@
 package com.wiormiw.digilott_20.v1.infrastructure.security;
 
-import com.wiormiw.digilott_20.v1.application.service.UserDetailsServiceImpl;
+import com.wiormiw.digilott_20.v1.application.service.implementation.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

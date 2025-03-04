@@ -1,4 +1,4 @@
-package com.wiormiw.digilott_20.v1.application.service;
+package com.wiormiw.digilott_20.v1.application.service.implementation;
 
 import com.wiormiw.digilott_20.v1.infrastructure.repository.UserRepository;
 import com.wiormiw.digilott_20.v1.domain.models.User;
