@@ -52,9 +52,6 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Profile profile;
 
-    @ManyToMany(mappedBy = "participants")
-    private Set<Room> rooms = new HashSet<>();
-
     public boolean isAdmin() {
         return this.roles.stream().anyMatch(role -> role.getName().equals(Role.RoleType.ADMIN));
     }
