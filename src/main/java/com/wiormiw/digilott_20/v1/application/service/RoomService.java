@@ -34,9 +34,13 @@ public class RoomService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        Room room = new Room(UUID.randomUUID(), dto.name(), dto.description(),
-                Set.of(user), Room.RoomStatus.PENDING,
-                dto.minParticipants(), dto.maxParticipants(), dto.participationCost());
+        Room room = new Room();
+        room.setName(dto.name());
+        room.setDescription(dto.description());
+        room.setStatus(Room.RoomStatus.PENDING);
+        room.setMinParticipants(dto.minParticipants());
+        room.setMaxParticipants(dto.maxParticipants());
+        room.setParticipationCost(dto.participationCost());
 
         roomRepository.save(room);
         return new RoomResponseDTO(
@@ -51,10 +55,8 @@ public class RoomService {
 
     public Set<RoomResponseDTO> getUserRooms() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        return user.getRooms().stream()
+        return roomRepository.findRoomsByParticipantUsername(username).stream()
                 .map(room -> new RoomResponseDTO(
                         room.getId(),
                         room.getName(),
