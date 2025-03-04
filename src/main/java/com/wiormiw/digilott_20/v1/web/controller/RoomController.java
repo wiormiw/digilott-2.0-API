@@ -13,7 +13,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/rooms")
-public class RoomController {
+public class RoomController implements BaseV1Controller {
     private final RoomService roomService;
 
     public RoomController(RoomService roomService) {

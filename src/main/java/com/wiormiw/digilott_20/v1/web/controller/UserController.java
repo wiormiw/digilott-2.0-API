@@ -12,7 +12,7 @@
 
     @RestController
     @RequestMapping("/api/v1/users")
-    public class UserController extends BaseV1Controller {
+    public class UserController implements BaseV1Controller {
         private final UserService userService;
 
         public UserController(UserService userService) {
