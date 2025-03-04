@@ -42,31 +42,51 @@ public class UserService {
 
     public List<UserResponseDTO> getAllUsers() {
         return userRepository.findAll().stream()
-                .map(user -> new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail()))
+                .map(user -> new UserResponseDTO(
+                        user.getId(),
+                        user.getUsername(),
+                        user.getEmail()))
                 .collect(Collectors.toList());
     }
 
     public List<UserProfileDTO> getAllUsersWithProfiles() {
         return profileRepository.findAll().stream()
                 .map(profile -> new UserProfileDTO(
-                        new UserResponseDTO(profile.getUser().getId(), profile.getUser().getUsername(), profile.getUser().getEmail()),
-                        new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber())
-                ))
+                        new UserResponseDTO(
+                                profile.getUser().getId(),
+                                profile.getUser().getUsername(),
+                                profile.getUser().getEmail()),
+                        new ProfileDTO(
+                                profile.getNik(),
+                                profile.getFullName(),
+                                profile.getProvince(),
+                                profile.getCity(),
+                                profile.getFullPhoneNumber())))
                 .collect(Collectors.toList());
     }
 
     public UserResponseDTO getById(UUID id) {
         return userRepository.findById(id)
-                .map(user -> new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail()))
+                .map(user -> new UserResponseDTO(
+                        user.getId(),
+                        user.getUsername(),
+                        user.getEmail()))
                 .orElseThrow(() -> new ResourceNotFoundException("User with ID " + id + " not found"));
     }
 
     public UserProfileDTO getProfileByUserId(UUID userId) {
         return profileRepository.findByUserId(userId)
                 .map(profile -> new UserProfileDTO(
-                        new UserResponseDTO(profile.getUser().getId(), profile.getUser().getUsername(), profile.getUser().getEmail()),
-                        new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber())
-                ))
+                        new UserResponseDTO(
+                                profile.getUser().getId(),
+                                profile.getUser().getUsername(),
+                                profile.getUser().getEmail()),
+                        new ProfileDTO(
+                                profile.getNik(),
+                                profile.getFullName(),
+                                profile.getProvince(),
+                                profile.getCity(),
+                                profile.getFullPhoneNumber())))
                 .orElseThrow(() -> new ResourceNotFoundException("Profile for User ID " + userId + " not found"));
     }
 
@@ -97,7 +117,10 @@ public class UserService {
 
         userRepository.save(user);
 
-        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
+        return new UserResponseDTO(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail());
     }
 
     @Transactional
@@ -113,7 +136,10 @@ public class UserService {
         }
 
         userRepository.save(user);
-        return new UserResponseDTO(user.getId(), user.getUsername(), user.getEmail());
+        return new UserResponseDTO(
+                user.getId(),
+                user.getUsername(),
+                user.getEmail());
     }
 
     @Transactional
@@ -129,7 +155,12 @@ public class UserService {
         profile.setPhoneNumber(dto.phoneNumber());
 
         profileRepository.save(profile);
-        return new ProfileDTO(profile.getNik(), profile.getFullName(), profile.getProvince(), profile.getCity(), profile.getFullPhoneNumber());
+        return new ProfileDTO(
+                profile.getNik(),
+                profile.getFullName(),
+                profile.getProvince(),
+                profile.getCity(),
+                profile.getFullPhoneNumber());
     }
 
     @Transactional
